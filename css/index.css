@@ -4,14 +4,29 @@
 
 body {
     background-color: antiquewhite;
+    text-align: center;
 }
 
 #container {
+    overflow: hidden;
     border: blue solid 2px;
     display: flex;
     flex-direction: row;
+
+    margin: 1rem;
 }
 
 .dish {
+    overflow: hidden;
+    width: 50%;
     border: red solid 2px;
+
+    display: block;
+    margin: 0.5rem;
+    font-size: larger;
+}
+
+.dish img {
+    width: 75%;
+    border-radius: 10px;
 }

@@ -24,7 +24,7 @@ async function promiseToData(promise) {
 }
 
 function postMeal(dish, meal) {
-    dish.name = meal.strMeal;
+    dish.name.innerHTML = meal.strMeal;
     dish.image.src = meal.strMealThumb;
 }
 // Startup function
@@ -47,5 +47,6 @@ async function startup() {
             console.log(error)
         });
 }
+
 startup();
 
