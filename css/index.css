@@ -5,3 +5,13 @@
 body {
     background-color: antiquewhite;
 }
+
+#container {
+    border: blue solid 2px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dish {
+    border: red solid 2px;
+}
