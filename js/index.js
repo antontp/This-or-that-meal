@@ -4,49 +4,53 @@ const api_url = 'https://www.themealdb.com/api/json/v1/1/random.php';
 const x = {
     container: document.getElementById("xDish"),
     name: document.getElementById("xName"),
-    image: document.getElementById("xImg")
-}
-
+    image: document.getElementById("xImg"),
+    dish: {}
+};
 const y = {
     container: document.getElementById("yDish"),
     name: document.getElementById("yName"),
-    image: document.getElementById("yImg")
-}
-
+    image: document.getElementById("yImg"),
+    dish: {}
+};
 
 async function fetchData() {
-    return await fetch(api_url);
-}
-
-async function promiseToData(promise) {
-    var data = await promise.json();
-    return data.meals[0];
+    try {
+        var promise = await fetch(api_url);
+        var data = await promise.json();
+        return data.meals[0];
+    }
+    catch (error) {
+        // TODO: HandleError();
+        console.log(error);
+    }
 }
 
 function postMeal(dish, meal) {
     dish.name.innerHTML = meal.strMeal;
     dish.image.src = meal.strMealThumb;
-}
-// Startup function
-async function startup() {
-    fetchData()
-        .then(promiseToData)
-        .then(dish => {
-            postMeal(x, dish)
-        })
-        .catch(error => {
-            console.log(error)
-        });
-    
-    fetchData()
-        .then(promiseToData)
-        .then(dish => {
-            postMeal(y, dish)
-        })
-        .catch(error => {
-            console.log(error)
-        });
+    dish.dish = meal;
 }
 
-startup();
+async function fillDishes(dishes) {
+    while (dishes.length < 3) {
+        dishes.unshift(await fetchData());
+    }
+}
+async function startup(dishes) {
+    for (let i = 0; i < 3; i++) {
+        dishes.unshift(await fetchData());
+    }
+    postMeal(x, dishes.pop());
+    postMeal(y, dishes.pop());
+}
+
+function main() {
+    var dishes = [];
+    startup(dishes);
+    
+    console.log(dishes);
+}
+
+main();
 
