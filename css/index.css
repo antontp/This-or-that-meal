@@ -3,30 +3,31 @@
 }
 
 body {
-    background-color: antiquewhite;
+    background-color: #354259;
     text-align: center;
 }
 
 #container {
-    overflow: hidden;
-    border: blue solid 2px;
+    overflow: auto;
     display: flex;
     flex-direction: row;
-
-    margin: 1rem;
+    justify-content: space-between;
+    gap: 5rem;
 }
 
 .dish {
-    overflow: hidden;
     width: 50%;
-    border: red solid 2px;
-
-    display: block;
-    margin: 0.5rem;
+    background-color: cornsilk;
+    border-radius: 10px;
     font-size: larger;
 }
 
 .dish img {
     width: 75%;
     border-radius: 10px;
+}
+
+.dish:hover {
+    background-color: rgb(96, 96, 96);
+    color: white;
 }
