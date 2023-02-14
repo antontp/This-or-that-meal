@@ -12,7 +12,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 5rem;
+    gap: 0rem;
 }
 
 .dish {
@@ -20,6 +20,7 @@ body {
     background-color: cornsilk;
     border-radius: 10px;
     font-size: larger;
+    box-shadow: 10px 10px 10px 10px #354259;
 }
 
 .dish img {
