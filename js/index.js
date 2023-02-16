@@ -112,5 +112,6 @@ function getInstructions(dish) {
     return insEl;
 }
 
-startup()
+startup();
+console.log("test user");
 
